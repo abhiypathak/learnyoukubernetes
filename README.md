@@ -9,7 +9,7 @@ While creating this repository I used Linux Academy Cloud Servers with the follo
 
 Steps involved:
 
-1. KubeMaster, KubeNode1 and KubeNode2:
+1. KubeMaster, KubeNode1 and KubeNode2:  
     Install Docker (```learnyoukubernetes/docker_install.sh```)  
     Install Kubernetes (```learnyoukubernetes/kubernetes_install.sh```)
     
@@ -39,11 +39,11 @@ Steps involved:
     Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCommit:"2d3c76f9091b6bec110a5e63777c332469e0cba2", GitTreeState:"clean", BuildDate:"2019-08-19T11:05:50Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"
     ```  
 
-3. KubeMaster, KubeNode1 and KubeNode2:
+3. KubeMaster, KubeNode1 and KubeNode2:  
     ```shell> echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf```  
     ```shell> sudo sysctl -p```  
 
-4. KubeMaster:
+4. KubeMaster:  
     ```shell> kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml```  
     ```
     stdout
@@ -79,5 +79,5 @@ Steps involved:
    kube-proxy-z6wwz                                 1/1     Running   0          34m
    kube-scheduler-xxxxxx.mylabserver.com            1/1     Running   0          34m
    ```
-Note: The above scripts written for Debian based distribution
+Note: The above scripts are written for Debian based distribution
  
