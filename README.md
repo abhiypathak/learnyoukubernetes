@@ -14,7 +14,7 @@ Steps involved:
     Install Kubernetes (```learnyoukubernetes/kubernetes_install.sh```)
     
 2. KubeMaster:  
-    ```shell> sudo kubeadm init --pod-network-cidr=10.244.0.0/16```       
+    ```$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16```       
     ```
     stdout
     ...
@@ -28,10 +28,10 @@ Steps involved:
            --discovery-token-ca-cert-hash sha256:<hash>
    ...
    ```  
-    ```shell> mkdir -p $HOME/.kube```  
-    ```shell> sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config```    
-    ```shell> sudo chown $(id -u):$(id -g) $HOME/.kube/config```   
-    ```shell> kubectl version``` 
+    ```$ mkdir -p $HOME/.kube```  
+    ```$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config```    
+    ```$ sudo chown $(id -u):$(id -g) $HOME/.kube/config```   
+    ```$ kubectl version``` 
     ```
     stdout
     
@@ -40,11 +40,12 @@ Steps involved:
     ```  
 
 3. KubeMaster, KubeNode1 and KubeNode2:  
-    ```shell> echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf```  
-    ```shell> sudo sysctl -p```  
+    ```$ echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf```  
+    ```$ sudo sysctl -p```  
+    ```$ kubeadm join <kubemaster_private_ip>:6443 --token <secret.token> --discovery-token-ca-cert-hash sha256:<hash>```    
 
 4. KubeMaster:  
-    ```shell> kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml```  
+    ```$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml```  
     ```
     stdout
     podsecuritypolicy.policy/psp.flannel.unprivileged created
@@ -58,7 +59,7 @@ Steps involved:
     daemonset.apps/kube-flannel-ds-ppc64le created
     daemonset.apps/kube-flannel-ds-s390x created
     ```  
-   ```shell> kubectl get nodes && kubectl get pods -n kube-system```  
+   ```$ kubectl get nodes && kubectl get pods -n kube-system```  
    ```
    stdout
    NAME                     STATUS   ROLES    AGE   VERSION
